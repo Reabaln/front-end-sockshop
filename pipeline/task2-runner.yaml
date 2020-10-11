@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: dockr-runner
+spec:
+  serviceAccountName: reab-docker-hub
+  taskRef:
+    name: dockr
+  params:
+  - name: IMAGE
+    value: "reabaln/reabaln"
+  resources:
+    inputs:
+    - name: front-end
+      resourceRef:
+        name: front-end
